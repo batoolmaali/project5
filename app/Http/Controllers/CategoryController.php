@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
+
         $categories = Category::all();
         return view('admins.Category', compact('categories'));
     }
@@ -25,6 +28,7 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
+
         $request->validate([
             'cat_name'   => 'required',
             'cat_desc'   => 'required',
@@ -55,7 +59,7 @@ class CategoryController extends Controller
             'cat_name'          => $request-> cat_name,
             'cat_image'         => $filename
         ]);
-        return redirect('/category');
+        return redirect('/category')->with(['status' => ' Create successfully.']);
     }
 
     /**
@@ -64,10 +68,25 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
-    }
+    public function showPublic(Category $category)
+{
+    $categories = Category::all();
+    $all_posts = Post::all();
+    return  view('users.categories' , compact('categories' , 'all_posts'));
+}
+
+
+
+public function indexpublic()
+{
+    $categories = Category::all();
+//        return view('users.index', compact('categories'));
+    $all_posts = Post::all();
+    $cat1 = Category::find('1');
+    $post1 = Post::find('1');
+
+    return view ('users.index' , compact('all_posts','categories' , 'cat1','post1'));
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -88,7 +107,7 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-// 
+//
     public function update(Request $request, $id)
     {
         $this->create($request);
@@ -106,7 +125,8 @@ class CategoryController extends Controller
             'cat_desc'  => $request->cat_desc,
             'cat_image' => $filename
         ]);
-        return redirect('category');
+        return redirect('/category')->with(['status' => ' Update successfully.']);
+
     }
 
     /**
@@ -118,6 +138,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect('/category');
+        return redirect('/category')->with(['delete' => ' Delete successfully.']);
+
     }
 }

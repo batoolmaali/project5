@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+
 class UserController extends Controller
 {
     /**
@@ -69,7 +70,39 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    
+        if ($request->hasFile('image')){
+
+            $file = $request->file('image') ;
+            $ext = $file->getClientOriginalExtension() ;
+            $filename = time() . '.' . $ext ;
+            $file->move('images/', $filename);
+            
+        }
+      
+        user::where("id", $id)->update([
+          "image"       =>$filename,
+        ]);
+        return redirect()->back();
+    }
+
+
+    public function updatePic(Request $request, $id)
+    {
+    
+        if ($request->hasFile('image')){
+
+            $file = $request->file('image') ;
+            $ext = $file->getClientOriginalExtension() ;
+            $filename = time() . '.' . $ext ;
+            $file->move('images/', $filename);
+            
+        }
+      
+        user::where("id", $id)->update([
+          "image"       =>$filename,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -82,17 +115,16 @@ class UserController extends Controller
     {
         //
     }
+
     public function single($id){
         // dd($id);
-        $user_posts=User::find($id)->posts->first();
+        $user_posts=User::find($id)->posts;
         $user=User::find($id);
         // dd($user);
-
         // dd($user_posts);
-        return view('single', [
+        return view('users.profile', [
             'post' => $user_posts,
             'user' => $user,
         ]);
-      
     }
 }

@@ -7,6 +7,16 @@
 @section('main')
 
         <div class="col-sm-8">
+
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @elseif(session('delete'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('delete') }}
+                </div>
+            @endif
     <div class="card-block">
         <h4 class="sub-title">Create Category</h4>
         <form method="post" action="/category" enctype="multipart/form-data">
@@ -69,7 +79,7 @@
                 <td>{{$category->cat_name}}</td>
                 <td>{{$category->cat_desc}}</td>
                 <td><img height="200em" width="200em" src='{{asset("images/cat_images/$category->cat_image")}}'></td>
-                <td><a href="edit/{{$category->id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                <td><a href="edit/{{$category->id}}/category"><button type="button" class="btn btn-primary">Edit</button></a></td>
                 <td><a href="delete/{{$category->id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
             </tr>
             @endforeach

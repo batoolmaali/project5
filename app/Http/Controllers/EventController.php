@@ -22,6 +22,17 @@ class EventController extends Controller
     }
 
 
+    public function indexPublic()
+    {
+        //show eventgallery
+
+        $showall=Event::all();
+        
+        return view('users.events', compact('showall'));
+        
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -84,9 +95,12 @@ return redirect('/event')->with(['status' => ' Create successfully.']);
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show($id)
     {
         //
+        
+        $show= Event::find($id);
+       return view('users.single',compact('show'));
     }
 
     /**

@@ -19,15 +19,21 @@ class User extends Authenticatable
     //     'name', 'email', 'password',
     // ];
 
-    protected $fillable = ['user_name','user_email','user_password', 'user_phone', 'user_image', 'role'];
+    protected $fillable = ['name','email','password', 'phone', 'image', 'role'];
 
 
-    public function category(){
+    public function category(){ 
         return $this->belongsToMany('App\Category','posts');
     }
+
     public function posts(){
         return $this->hasMany('App\Post');
     }
+
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
+
 
     /**
      * The attributes that should be hidden for arrays.

@@ -12,9 +12,16 @@ class Category extends Model
     public function user(){
         return $this->belongsToMany('App\User','posts');
     }
+
+
     public function posts(){
+
         return $this->hasMany('App\Post');
+
     }
+
+
+
 }
 
 

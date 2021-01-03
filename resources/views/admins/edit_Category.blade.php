@@ -9,7 +9,7 @@
     <div class="col-sm-8">
         <div class="card-block">
             <h4 class="sub-title">Edit Category</h4>
-            <form method="post" action="/update/{{$category->id}}" enctype="multipart/form-data">
+            <form method="post" action="/update/{{$category->id}}/category" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Category Name</label>

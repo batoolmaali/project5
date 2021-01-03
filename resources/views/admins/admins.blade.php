@@ -65,8 +65,8 @@
      <label class="col-sm-2 col-form-label">role</label>
    <div class="col-sm-10">
     <select name="role" class="form-control">
-     <option value="opt1">Select Admin role</option>
-    <option value="opt2">Admin</option>
+     <option value="Admin">Select Admin role</option>
+    <option value="Admin">Admin</option>
   </select>
  </div>
  </div>
@@ -111,8 +111,8 @@
              <tr>
                                              
              <td>{{$value->id}}</td>
-             <td>{{$value->admin_name}}</td>
-             <td>{{$value->admin_email}}</td>
+             <td>{{$value->name}}</td>
+             <td>{{$value->email}}</td>
              <td><img height="200em" width="200em" src='{{asset("images/$value->admin_image")}}'></td>                                
               <td>
             <form method="post" action="/admin/delete/{{$value->id}}">

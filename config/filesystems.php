@@ -64,12 +64,12 @@ return [
             'url' => env('AWS_URL'),
         ],
 
-        'categories' => [
-            'driver' => 'local',
-            'root' => storage_path('public/images/'),
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
-        ],
+        // 'categories' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('public/images/'),
+        //     'url' => env('APP_URL').'/public',
+        //     'visibility' => 'public',
+        // ],
 
     ],
 

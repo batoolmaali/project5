@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -661,6 +662,7 @@
 									</div><!-- who's following -->
 								</aside>
 							</div><!-- sidebar -->
+							
 							<div class="col-lg-6">
 								<div class="central-meta">
 									<div class="new-postbox">
@@ -668,34 +670,20 @@
 											<img src="{{asset('theme/images/resources/admin2.jpg')}}" alt="">
 										</figure>
 										<div class="newpst-input">
-											<form method="post" action="/posts/create">
-												<textarea rows="2" placeholder="write something"></textarea>
+											<form method="post" action="posts/create/{{$category}}" enctype="multipart/form-data">
+												<textarea rows="2" placeholder="write something" name="post_desc"></textarea>
+												@csrf
 												<div class="attachments">
 													<ul>
-														<li>
-															<i class="fa fa-music"></i>
-															<label class="fileContainer">
-																<input type="file">
-															</label>
-														</li>
+														
 														<li>
 															<i class="fa fa-image"></i>
 															<label class="fileContainer">
-																<input type="file">
+																<input type="file" name="image">
 															</label>
 														</li>
-														<li>
-															<i class="fa fa-video-camera"></i>
-															<label class="fileContainer">
-																<input type="file">
-															</label>
-														</li>
-														<li>
-															<i class="fa fa-camera"></i>
-															<label class="fileContainer">
-																<input type="file">
-															</label>
-														</li>
+														
+														
 														<li>
 															<button type="submit">Post</button>
 														</li>
@@ -704,7 +692,7 @@
 											</form>
 										</div>
 									</div>
-								</div><!-- add post new box -->
+								</div>
                                 <div class="loadMore">
 
 

@@ -13,20 +13,20 @@
 
                                                         </div>
                                                         <div class="card-block">
-                                                            <h4 class="sub-title">Add admin</h4>
+                                                            <h4 class="sub-title">Edit admin</h4>
                                                             <form action="/admin/update/{{$user->id}}" method="post" enctype="multipart/form-data">
                                                                  @csrf
                                                                  @method('put')
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-2 col-form-label">Admin name</label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="text" class="form-control" placeholder="Enter admin name" name="name" value="{{$user->admin_name}}">
+                                                                        <input type="text" class="form-control" placeholder="Enter admin name" name="name" value="{{$user->name}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-2 col-form-label">Admin Password</label>
                                                                     <div class="col-sm-10">
-                                                                        <input type="password" class="form-control" placeholder="Password input" name="password" value="{{$user->admin_password}}">
+                                                                        <input type="password" class="form-control" placeholder="Password input" name="password" value="">
                                                                     </div>
                                                                 </div>
                                                               
@@ -35,7 +35,7 @@
                                                                     <label class="col-sm-2 col-form-label">Admin email
                                                                         </label>
                                                                         <div class="col-sm-10">
-                                                                            <input type="email" class="form-control"placeholder="Enter Admin email" name="email"  value="{{$user->admin_email}}">
+                                                                            <input type="email" class="form-control"placeholder="Enter Admin email" name="email"  value="{{$user->email}}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -54,7 +54,7 @@
                                                                             
                                                                             </div>
                                                                            
-                                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                            <button type="submit" class="btn btn-primary">Update</button>
 
                                                                             </div>
                                                                         </form>
